@@ -5,7 +5,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_PROFILE = 'GET_PROFILE';
-
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SAVE_RESULTS = 'SAVE_RESULTS';

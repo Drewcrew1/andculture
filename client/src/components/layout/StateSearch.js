@@ -53,15 +53,19 @@ if(this.state.brewdata === null || undefined){
                favButton = '';
            }
            return(
-               <div className="card mb-4 shadow-sm">
-                   <div key={obj.id} className="card-body">
+               <div className="row">
+                   <div className="col-md-12">
+                    <div className="card mb-4 shadow-sm">
+                     <div key={obj.id} className="card-body">
                        {favButton}
-                       <h4 className="card-text">{obj.name}</h4>
-                       <p className="card-text">Type - {obj.brewery_type}</p>
-                       <p className="card-text"> State - {obj.state}</p>
-                       <p className="card-text"> City - {obj.city}</p>
-                       <p className="card-text"> Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></p>
+                       <h4 className="display-4">{obj.name}</h4>
+                       <p className="card-text lead"><b>Type - {obj.brewery_type}</b></p>
+                         <p className="card-text lead"><b>State - {obj.state}</b></p>
+                         <p className="card-text lead"><b>City - {obj.city}</b></p>
+                       <p className="card-text lead"><b>Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></b></p>
                        <Link className="btn btn-primary btn-lg" to={`/brewDetail/${obj.id}`}>More Info </Link>
+                   </div>
+               </div>
                    </div>
                </div>
            );
@@ -75,15 +79,19 @@ if(this.state.brewdata === null || undefined){
                 favButton = '';
             }
             return(
+                <div className="row">
+                    <div className="col-md-12">
                 <div className="card mb-4 shadow-sm">
                     <div key={obj.id} className="card-body">
                         {favButton}
-                        <h4 className="card-text">{obj.name}</h4>
-                        <p className="card-text">Type - {obj.brewery_type}</p>
-                        <p className="card-text"> State - {obj.state}</p>
-                        <p className="card-text"> City - {obj.city}</p>
-                        <p className="card-text"> Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></p>
+                        <h4 className="display-4">{obj.name}</h4>
+                        <p className="card-text lead"><b>Type - {obj.brewery_type}</b></p>
+                        <p className="card-text lead"><b>State - {obj.state}</b></p>
+                        <p className="card-text lead"><b>City - {obj.city}</b></p>
+                        <p className="card-text lead"><b>Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></b></p>
                         <Link className="btn btn-primary btn-lg" to={`/brewDetail/${obj.id}`}>More Info </Link>
+                    </div>
+                </div>
                     </div>
                 </div>
             );
@@ -104,8 +112,9 @@ if(this.state.brewdata === null || undefined){
                 </div>
             </form>
             <hr />
-
-        {newData}
+                <div className="container">
+                    {newData}
+                </div>
             </div>
 
         );

@@ -22,17 +22,21 @@ let content;
 if(this.props.favs.favs.length > 0){
     content = this.props.favs.favs.map((obj) => {
         return(
+            <div className="row">
+                <div className="col-md-12">
             <div className="card mb-4 shadow-sm">
                 <div key={obj.id} className="card-body">
-                    <small><button onClick={() => {
+                    <small><button className="btn btn-danger" onClick={() => {
                         this.props.removeFavs(obj._id);
                         this.props.getFavs(id);
                         this.setState({favs: this.props.favs});
                     }}>Remvoe Fav</button></small>
-                    <h4 className="card-text">{obj.name}</h4>
-                    <p className="card-text"> state - {obj.state}</p>
-                    <p className="card-text"> Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></p>
-                    <small><Link to={`/brewDetail/${obj.id}`}>More Info </Link></small>
+                    <h4 className="display-4">{obj.name}</h4>
+                    <p className="card-text lead">State - {obj.state}</p>
+                    <p className="card-text lead">Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></p>
+                    <small><Link className="btn btn-primary btn-lg" to={`/brewDetail/${obj.id}`}>More Info </Link></small>
+                </div>
+            </div>
                 </div>
             </div>
         );
@@ -44,7 +48,9 @@ if(this.props.favs.favs.length > 0){
         return (
             <div>
                 <h2>Favs</h2>
+                <div className="container">
                 {content}
+                </div>
             </div>
         );
     }

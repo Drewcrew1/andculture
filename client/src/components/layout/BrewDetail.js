@@ -45,10 +45,10 @@ constructor(){
                 let lng = info.longitude
 
                 content = <div >
-                    <h3>{info.name}</h3>
-                    <p>Brewery Type - {info.brewery_type}</p>
-                    <p>{info.street}, {info.city}, {info.state}, {info.postal_code}</p>
-                    <p> Website - <a href={info.website_url} target="_blank">{info.website_url}</a></p>
+                    <h3 className="display-3">{info.name}</h3>
+                    <h3>Brewery Type - {info.brewery_type}</h3>
+                    <h3>{info.street}, {info.city}, {info.state}, {info.postal_code}</h3>
+                    <h3> Website - <a href={info.website_url} target="_blank">{info.website_url}</a></h3>
                     <div>
                         <Map google={this.props.google}
                              style={mapStyles}

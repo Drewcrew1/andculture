@@ -19,7 +19,9 @@ class StateSearch extends React.Component {
         axios.get(`/api/openBrew/state/${this.state.area}`).then((response) => {
 
             this.setState({brewdata: response.data});
-            this.props.saveResults(response.data);
+            if(response.data.length > 0){
+                this.props.saveResults(response.data);
+            }
         }).catch((err) => {
             console.log(err);
         });
@@ -33,6 +35,7 @@ class StateSearch extends React.Component {
 
         let newData;
         let uid = this.props.auth.user._id;
+
 if(this.state.brewdata === null || undefined){
     newData = (  <div>
             <p>Loading</p>
@@ -41,8 +44,8 @@ if(this.state.brewdata === null || undefined){
 
 }else{
     if(this.state.brewdata.msg){
-        return newData = 'No Results Found';
-    }
+        newData = 'No results Found';
+    }else{
 
 
    if(this.state.brewdata.length === 0){
@@ -70,6 +73,7 @@ if(this.state.brewdata === null || undefined){
            );
        });
     }else{
+
         newData = this.state.brewdata.map((obj) => {
             let favButton
             if(this.props.auth.isAuthenticated){
@@ -93,7 +97,7 @@ if(this.state.brewdata === null || undefined){
             );
         });
     }
-
+    }
 }
 
 
@@ -102,7 +106,7 @@ if(this.state.brewdata === null || undefined){
             <form onSubmit={this.submitCity} className="form-group">
                 <div className="container">
                     <label><b>State</b></label>
-                    <input className="form-control" onChange={this.onChange}  name="area"/><br/>
+                    <input required className="form-control" onChange={this.onChange}  name="area"/><br/>
                     <input className="btn btn-secondary" type="submit"  />
 
                 </div>

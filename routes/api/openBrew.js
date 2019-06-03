@@ -29,8 +29,14 @@ router.get('/', (req,res) => {
 router.get('/state/:state',(req,res) => {
 
     const errors = {};
+
     axios.get(`https://api.openbrewerydb.org/breweries?by_state=${req.params.state}`).then((response) => {
-        res.json(response.data);
+        if (response.data.length < 1){
+            errors.msg = 'No results for your search';
+            res.json(errors);
+        }else{
+            res.json(response.data);
+        }
 
     }).catch((err) => {
        console.log(err);

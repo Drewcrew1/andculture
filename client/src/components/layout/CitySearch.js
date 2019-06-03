@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+
 import {saveResults} from '../../actions/search';
 import {makeFav} from '../../actions/favs';
 import {connect} from 'react-redux';
@@ -13,11 +13,13 @@ class CitySearch extends React.Component {
         this.state = {
             area: '',
             city: '',
-            brewdata: []
+            brewdata: [],
+            errors: {}
         }
     }
     submitCity = (e) => {
         e.preventDefault();
+
         axios.get(`/api/openBrew/city/${this.state.area}/${this.state.city}`).then((response) => {
             if(response.data.length > 0){
                 this.props.saveResults(response.data);
@@ -113,9 +115,9 @@ class CitySearch extends React.Component {
                     <div className="container" >
 
                         <label><b>State</b></label>
-                        <input className="form-control" onChange={this.onChange}  name="area"/>
+                        <input required className="form-control" onChange={this.onChange}  name="area"/>
                         <label><b>City</b></label>
-                        <input className="form-control" onChange={this.onChange} name="city" /><br/>
+                        <input required className="form-control" onChange={this.onChange} name="city" /><br/>
                         <input className="btn btn-secondary" type="submit"  />
 
                     </div>

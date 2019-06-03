@@ -31,6 +31,7 @@ router.get('/state/:state',(req,res) => {
     const errors = {};
     axios.get(`https://api.openbrewerydb.org/breweries?by_state=${req.params.state}`).then((response) => {
         res.json(response.data);
+
     }).catch((err) => {
        console.log(err);
     });

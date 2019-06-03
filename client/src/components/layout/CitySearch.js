@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import {saveResults} from '../../actions/search';
 import {makeFav} from '../../actions/favs';
 import {connect} from 'react-redux';
+import SearchItem from '../common/SearchItem';
+
 
 class CitySearch extends React.Component {
     constructor(){
@@ -30,9 +32,7 @@ class CitySearch extends React.Component {
 
 
     }
-    componentDidMount(){
 
-    }
     render(){
         let newData;
 
@@ -59,21 +59,18 @@ class CitySearch extends React.Component {
                             favButton = '';
                         }
                         return(
-                            <div className="row">
-                                <div className="col-md-12">
-                                  <div className="card mb-4 shadow-sm">
-                                      <div key={obj.id} className="card-body">
-                                    {favButton}
-                                    <h4 className="display-4">{obj.name}</h4>
-                                    <p className="card-text lead"><b>Type - {obj.brewery_type}</b></p>
-                                    <p className="card-text lead"><b>State - {obj.state}</b></p>
-                                    <p className="card-text lead"><b>City - {obj.city}</b></p>
-                                    <p className="card-text lead"><b>Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></b></p>
-                                    <Link className="btn btn-primary btn-lg" to={`/brewDetail/${obj.id}`}>More Info </Link>
-                                </div>
-                            </div>
-                                </div>
-                            </div>
+                            <SearchItem
+                                id={obj.id}
+                                favButton={favButton}
+                                name={obj.name}
+                                brewery_type={obj.brewery_type}
+                                state={obj.state}
+                                city={obj.city}
+                                website_url={obj.website_url}
+                                infoLink={obj.id}
+                                website_url_Link={obj.website_url}
+                                key={obj.id}
+                            />
                         );
                     });
                 }else{
@@ -86,21 +83,18 @@ class CitySearch extends React.Component {
                             favButton = '';
                         }
                         return (
-                            <div className="row">
-                            <div className="col-md-12">
-                            <div className="card mb-1 shadow-sm">
-                                <div key={obj.id} className="card-body mb-5">
-                                    {favButton}
-                                    <h4 className="display-4">{obj.name}</h4>
-                                    <p className="card-text lead"><b>Type - {obj.brewery_type}</b></p>
-                                    <p className="card-text lead"><b>State - {obj.state}</b></p>
-                                    <p className="card-text lead"><b>City - {obj.city}</b></p>
-                                    <p className="card-text lead"><b>Website - <a href={obj.website_url} target="_blank">{obj.website_url}</a></b></p>
-                                    <Link className="btn btn-primary btn-lg" to={`/brewDetail/${obj.id}`}>More Info </Link>
-                                </div>
-                            </div>
-                            </div>
-                            </div>
+                           <SearchItem
+                           id={obj.id}
+                           favButton={favButton}
+                           name={obj.name}
+                           brewery_type={obj.brewery_type}
+                           state={obj.state}
+                           city={obj.city}
+                           website_url={obj.website_url}
+                           infoLink={obj.id}
+                           website_url_Link={obj.website_url}
+                           key={obj.id}
+                           />
                         );
                     });
                 }
@@ -115,13 +109,13 @@ class CitySearch extends React.Component {
 
         return(
             <div>
-                <form onSubmit={this.submitCity}>
-                    <div >
+                <form onSubmit={this.submitCity} className="form-group">
+                    <div className="container" >
 
                         <label><b>State</b></label>
-                        <input onChange={this.onChange}  name="area"/>
+                        <input className="form-control" onChange={this.onChange}  name="area"/>
                         <label><b>City</b></label>
-                        <input onChange={this.onChange} name="city" /><br/>
+                        <input className="form-control" onChange={this.onChange} name="city" /><br/>
                         <input className="btn btn-secondary" type="submit"  />
 
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-
+import {Link} from 'react-router-dom';
 
 
 class Dashboard extends React.Component {
@@ -9,8 +9,9 @@ class Dashboard extends React.Component {
         super();
         this.state = {
             loading: true,
-            data: {}
-        }
+            data: []
+        };
+
     }
 
     componentDidMount() {
@@ -26,10 +27,12 @@ class Dashboard extends React.Component {
     render(){
 
         let dashContent;
- if(this.state.data === undefined || null){
-     dashContent = 'Loading';
+ if(this.state.data.length < 1){
+     dashContent = ( <div>
+         <p>Loading...</p>
+     </div> );
  }else{
-    let arr = Array.from(this.state.data);
+    let arr = this.state.data;
 
    dashContent = arr.map((obj) => {
        return(
@@ -37,7 +40,7 @@ class Dashboard extends React.Component {
            <div key={obj.id} className="card-body">
                <p className="card-text">Brewery Name - <b>{obj.name}</b></p>
                <p className="card-text">City and State - {obj.city}, {obj.state}</p>
-
+               <Link className="btn btn-primary btn-sm" to={`/brewDetail/${obj.id}`}>More Info </Link>
            </div>
            </div>
        );

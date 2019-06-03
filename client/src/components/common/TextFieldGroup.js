@@ -14,6 +14,7 @@ const TextFieldGroup = ({
     return (
         <div className="form-group">
             <input
+                required
                 type={type}
                 className={'form-control form-control-lg'}
                 placeholder={placeholder}

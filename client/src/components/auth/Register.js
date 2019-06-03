@@ -49,7 +49,10 @@ class Register extends React.Component{
     };
 
     render(){
-
+        let errors;
+            if(this.state.errors === 'Passwords do not match.'){
+                errors = 'Passwords do not match.';
+            }
 
         if(this.props.isAuthenticated){
             return <Redirect to="/dashboard" />
@@ -94,6 +97,7 @@ class Register extends React.Component{
                                     onChange={this.onChange}
 
                                 />
+                                {errors}
                                 <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
                         </div>

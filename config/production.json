@@ -1,4 +1,4 @@
 {
-  mongoURI: 'mongodb://drewcrew1:drewcar1@ds363996.mlab.com:63996/andculture',
-  secretOrKey: 'abc123'
+  mongoURI: process.env.MONGO_URI,
+  secretOrKey: process.env.SECRET_OR_KEY
 }
